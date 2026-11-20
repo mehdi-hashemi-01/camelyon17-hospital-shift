@@ -1,0 +1,5 @@
+hospital,model,correct,total,accuracy,confidence,gap
+source,a,3,4,0.75,0.75,0.0
+source,b,3,4,0.75,0.95,0.2
+unseen,a,2,4,0.5,0.75,0.25
+unseen,b,2,4,0.5,0.95,0.45
