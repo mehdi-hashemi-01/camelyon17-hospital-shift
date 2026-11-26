@@ -3,15 +3,14 @@ import csv
 import torch
 from torch.utils.data import DataLoader
 from torchvision.models import resnet18
-from wilds import get_dataset
 
-from settings import BATCH_SIZE, DATA, MODEL, ROOT, image_transform
+from settings import BATCH_SIZE, load_camelyon17, MODEL, ROOT, image_transform
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
 model = resnet18(weights=None, num_classes=2).to(device)
 model.load_state_dict(torch.load(MODEL, map_location=device, weights_only=True))
 model.eval()
-data = get_dataset(dataset="camelyon17", root_dir=str(DATA), download=False)
+data = load_camelyon17()
 summary = []
 with torch.inference_mode():
     for split in ["id_val", "val"]:

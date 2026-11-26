@@ -1,10 +1,8 @@
 from collections import Counter
 
-from wilds import get_dataset
+from settings import load_camelyon17
 
-from settings import DATA
-
-dataset = get_dataset(dataset="camelyon17", root_dir=str(DATA), download=False)
+dataset = load_camelyon17()
 center = dataset.metadata_fields.index("hospital")
 for split in ["train", "id_val", "val", "test"]:
     subset = dataset.get_subset(split)
